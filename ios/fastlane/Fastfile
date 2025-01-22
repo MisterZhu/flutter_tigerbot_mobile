@@ -1,0 +1,196 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+# import webbrowser
+
+default_platform(:ios)
+
+platform :ios do
+	desc "打dev包上传fir并且钉钉机器人"
+	lane :dev_gym_fir_robot do
+		#increment_build_number(xcodeproj: "WestMoney.xcodeproj")
+		# build_app(workspace: "WestMoney.xcworkspace", scheme: "WestMoney")
+		time = Time.new.strftime("%Y%m%d") #获取时间格式
+		version = get_version_number#获取版本号
+		ipaName = "Release_#{version}_#{time}.ipa"
+		build_app(
+			scheme:"Runner", #项目名称
+			export_method: 'ad-hoc',#打包的类型  ad-hoc development
+			configuration: "Release",#模式，默认Release，还有Debug
+			output_name: "TigerChat",#输出的包名
+			output_directory: './firim', #输出的位置
+			silent:true,
+			clean:true,
+			export_options: {
+				provisioningProfiles: {
+				"com.tigerobo.tigerchat" => "tigerchat-adhoc",
+				# "com.tigerobo.tigerchat" => "tigerchat-developer",
+				}
+			}
+		)
+		firim(firim_api_token: '8f8e44c2dd94a4740f2dd90167264a57', app_name: 'TigerChat')
+
+		dingding_url = "https://oapi.dingtalk.com/robot/send?access_token=1d9045ff61a8a214a72bde738cebfb117a93216f23ca8c14741e939386de38d7"
+
+		# markdown =
+		# {
+		# 	"msgtype": "link",
+		# 	"content": {
+		# 		"post": {
+		# 		"zh_cn": {
+		# 			"title": "TigerChat iOS 测试包 V#{version}",
+		# 			"content": [
+		# 			[{
+		# 					"tag": "text",
+		# 					"text": "有更新: "
+		# 				},
+		# 				{
+		# 					"tag": "a",
+		# 					"text": "点击",
+		# 					"href": "http://d.maps9.com/tp5h"
+		# 				}]
+		# 				]
+		# 			}
+		# 		}
+		# 	}
+		# }
+
+		markdown = {
+			"msgtype": "link",
+			"link": {
+			"text": "TigerChat iOS 测试包 V#{version}",
+			"title": "TigerChat",
+			"picUrl": "",
+			"messageUrl": "https://tt.appc02.com/jz4xt6"
+			}
+		}
+
+
+		uri = URI.parse(dingding_url)
+		https = Net::HTTP.new(uri.host, uri.port)
+		https.use_ssl = true
+
+		request = Net::HTTP::Post.new(uri.request_uri)
+		request.add_field('Content-Type', 'application/json')
+		request.body = markdown.to_json
+
+		response = https.request(request)
+		puts "------------------------------"
+		puts "Response #{response.code} #{response.message}: #{response.body}"
+
+	end
+
+	desc "打dev包上传fir"
+	lane :dev_gym_fir do
+		#increment_build_number(xcodeproj: "WestMoney.xcodeproj")
+		# build_app(workspace: "WestMoney.xcworkspace", scheme: "WestMoney")
+		time = Time.new.strftime("%Y%m%d") #获取时间格式
+		version = get_version_number#获取版本号
+		ipaName = "Release_#{version}_#{time}.ipa"
+		build_app(
+			scheme:"Runner", #项目名称
+			export_method: 'development',#打包的类型
+			configuration: "Debug",#模式，默认Release，还有Debug
+			output_name: "TigerChat",#输出的包名
+			output_directory: './firim', #输出的位置
+			silent: true,
+			clean:false
+		)
+		firim(firim_api_token: '8f8e44c2dd94a4740f2dd90167264a57', app_name: 'TigerChat')
+		# webbrowser.open_new("http://d.maps9.com/tp5h")
+	end
+
+
+	desc "打release包上传connection"
+	lane :release do
+		time = Time.new.strftime("%Y%m%d") #获取时间格式
+		# increment_build_number(xcodeproj: "WestMoney.xcodeproj")
+		# git_pull
+		# build_app(
+		# 	workspace: "WestMoney.xcworkspace", 
+		# 	scheme: "WestMoney", 
+		# 	output_directory: './release',
+		# 	silent: true,
+		# 	clean: true)
+		upload_to_app_store(ipa: './release/WestMoney.ipa')
+		upload_symbols_to_crashlytics(dsym_path: './release') #上传dsym到firebase
+
+
+		# feishu_url = "https://open.feishu.cn/open-apis/bot/v2/hook/c083490c-ca17-47d5-9375-ee15655b7bcf"
+
+		feishu_url = "https://open.feishu.cn/open-apis/bot/v2/hook/6997bd70-0879-40e8-ad78-54735c186dbe"
+
+		
+
+		markdown =
+		{
+			"msg_type": "post",
+			"content": {
+				"post": {
+				"zh_cn": {
+					"title": "上传app store connection 成功"
+					}
+				}
+			}
+		}
+
+		uri = URI.parse(feishu_url)
+		https = Net::HTTP.new(uri.host, uri.port)
+		https.use_ssl = true
+
+		request = Net::HTTP::Post.new(uri.request_uri)
+		request.add_field('Content-Type', 'application/json')
+		request.body = markdown.to_json
+
+		response = https.request(request)
+		puts "------------------------------"
+		puts "Response #{response.code} #{response.message}: #{response.body}"
+
+
+	end
+
+	desc "添加测试设备"
+	lane :registerdevice do
+		puts "Enter a device name :"
+		name = gets.chomp 
+		puts "Enter a device uuid :"
+		uuid = gets.chomp 
+
+		puts "#{name}<#{uuid}>"
+
+		register_device(
+  			name: name,
+  			udid: uuid
+		)
+
+		# 拉取最新的描述文件
+		match(type: "development", force_for_new_devices: true)
+		
+	end
+
+
+	desc "拉取描述文件"
+ 	lane :match_dev do
+ 		match(type: "development", readonly: true)
+ 		# match(type: "adhoc", readonly: true)
+ 		match(type: "appstore", readonly: true)
+  	end
+
+
+
+end
+
+
+

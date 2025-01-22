@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ydg-fD-yQy"/>
+                        <viewControllerLayoutGuide type="bottom" id="xbc-2k-c8Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_img" translatesAutoresizingMaskIntoConstraints="NO" id="noN-g8-5ym">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_title" translatesAutoresizingMaskIntoConstraints="NO" id="JO5-3a-1fO">
+                                <rect key="frame" x="46.666666666666657" y="517.66666666666663" width="299.66666666666674" height="200"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="noN-g8-5ym" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Bj1-D4-hiE"/>
+                            <constraint firstItem="JO5-3a-1fO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="1.45" id="G7J-dh-Nag"/>
+                            <constraint firstItem="JO5-3a-1fO" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="46.670000000000002" id="QWx-pc-Gdl"/>
+                            <constraint firstAttribute="bottom" secondItem="noN-g8-5ym" secondAttribute="bottom" id="ZQc-52-oVu"/>
+                            <constraint firstAttribute="trailing" secondItem="JO5-3a-1fO" secondAttribute="trailing" constant="46.670000000000002" id="b1n-ot-7TS"/>
+                            <constraint firstAttribute="trailing" secondItem="noN-g8-5ym" secondAttribute="trailing" id="fFj-kR-sO1"/>
+                            <constraint firstItem="JO5-3a-1fO" firstAttribute="centerX" secondItem="noN-g8-5ym" secondAttribute="centerX" id="laU-I8-HJ8"/>
+                            <constraint firstItem="noN-g8-5ym" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="yZB-IC-TlT"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="80.152671755725194" y="264.08450704225356"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launch_img" width="750" height="1624"/>
+        <image name="launch_title" width="486" height="200"/>
+    </resources>
+</document>

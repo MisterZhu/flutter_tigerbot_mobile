@@ -1,0 +1,34 @@
+# The Deliverfile allows you to store various App Store Connect metadata
+# For more information, check out the docs
+# https://docs.fastlane.tools/actions/deliver/
+
+# bundle identifier
+app_identifier ENV['APP_IDENTIFIER']
+
+# Apple ID用户名
+username ENV['APPLE_ID']
+
+# 应用程序图标的路径 1024*1024
+app_icon './fastlane/metadata/app_icon.jpg'
+
+# 屏幕截图的文件夹的路径
+screenshots_path ENV['SCREENSHOTS_PATH']
+
+# 元数据的路径
+metadata_path ENV['METADATA_PATH']
+
+
+# 下载 metadata 及 screenshots 时直接覆盖，不询问
+force true
+
+
+# 不上传截图
+skip_screenshots true
+
+
+# 是否自动提交审核,true表示立马提交审核
+submit_for_review false
+
+
+# 审核通过后是否立刻发布,false表示需要手动发布
+automatic_release false
