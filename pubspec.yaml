@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 2.2.8+15
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=3.4.4 <4.0.0"
 fluwx:
   app_id: 'wx61d3970bb819f20c'
   debug_logging: true # Logging in debug mode.
@@ -54,7 +54,7 @@ dependencies:
   #flutter_markdown https://pub.dev/packages/flutter_markdown/changelog
   flutter_markdown: 0.6.18
   flutter_highlighter: ^0.1.1
-  bruno: ^3.4.3
+#  bruno: ^3.4.3
   file_picker: ^5.3.3
   image_picker: ^1.0.2
   auto_size_text: ^3.0.0
@@ -80,10 +80,9 @@ dependencies:
   flutter_sticky_header: ^0.6.5
   #极光推送插件 https://pub.dev/packages/jpush_flutter/install
 #  jpush_flutter: ^2.5.0
-  flutter_localization: ^0.2.0
+  flutter_localization: ^0.3.1
   #处理数据流插件 https://pub-web.flutter-io.cn/packages/flutter_client_sse/install
   flutter_client_sse: ^2.0.1
-
 
 dev_dependencies:
   flutter_test:

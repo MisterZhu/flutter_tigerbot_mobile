@@ -4,7 +4,6 @@ import 'package:TigerChat/util/provider/user_info_provider.dart';
 import 'package:TigerChat/util/request/response/TBResponse.dart';
 import 'package:TigerChat/util/tb_loading_utils.dart';
 import 'package:TigerChat/widgets/cached_image.dart';
-import 'package:bruno/bruno.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -39,37 +38,37 @@ class _MineResourcePageState extends State<MineResourcePage> {
   }
 
   showModal(BuildContext context) {
-    List<BrnCommonActionSheetItem> actions = [];
-    actions.add(BrnCommonActionSheetItem(
-      '拍照',
-      actionStyle: BrnCommonActionSheetItemStyle.normal,
-    ));
-    actions.add(BrnCommonActionSheetItem(
-      '相册中选取',
-      actionStyle: BrnCommonActionSheetItemStyle.normal,
-    ));
-
-    showModalBottomSheet(
-        context: context,
-        backgroundColor: Colors.transparent,
-        builder: (BuildContext context) {
-          return BrnCommonActionSheet(
-            actions: actions,
-            cancelTitle: "取消",
-            clickCallBack: (int index, BrnCommonActionSheetItem actionEle) {
-              // if (index == 0) {
-              //   _picker.pickImage(source: ImageSource.camera);
-              // } else {
-              //   _picker.pickImage(source: ImageSource.gallery);
-              // }
-              if (index == 0) {
-                _pickImage(ImageSource.camera);
-              } else {
-                _pickImage(ImageSource.gallery);
-              }
-            },
-          );
-        });
+    // List<BrnCommonActionSheetItem> actions = [];
+    // actions.add(BrnCommonActionSheetItem(
+    //   '拍照',
+    //   actionStyle: BrnCommonActionSheetItemStyle.normal,
+    // ));
+    // actions.add(BrnCommonActionSheetItem(
+    //   '相册中选取',
+    //   actionStyle: BrnCommonActionSheetItemStyle.normal,
+    // ));
+    //
+    // showModalBottomSheet(
+    //     context: context,
+    //     backgroundColor: Colors.transparent,
+    //     builder: (BuildContext context) {
+    //       return BrnCommonActionSheet(
+    //         actions: actions,
+    //         cancelTitle: "取消",
+    //         clickCallBack: (int index, BrnCommonActionSheetItem actionEle) {
+    //           // if (index == 0) {
+    //           //   _picker.pickImage(source: ImageSource.camera);
+    //           // } else {
+    //           //   _picker.pickImage(source: ImageSource.gallery);
+    //           // }
+    //           if (index == 0) {
+    //             _pickImage(ImageSource.camera);
+    //           } else {
+    //             _pickImage(ImageSource.gallery);
+    //           }
+    //         },
+    //       );
+    //     });
   }
 
   Future<void> _pickImage(ImageSource source) async {

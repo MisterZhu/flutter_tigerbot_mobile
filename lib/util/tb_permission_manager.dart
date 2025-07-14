@@ -4,7 +4,6 @@ import 'dart:ui';
 
 import 'package:TigerChat/util/router/tb_router_helper.dart';
 import 'package:TigerChat/util/tb_utils.dart';
-import 'package:bruno/bruno.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,20 +22,20 @@ class TBPermissionManager {
   ///权限失败弹框
   static showPermissionDialog(String message) {
     TBUtils.getCurrentContext(completionHandler: (context) async {
-      BrnDialogManager.showConfirmDialog(
-        context,
-        title: '温馨提示',
-        cancel: '取消',
-        confirm: '确定',
-        message: message,
-        onCancel: () {
-          TBRouterHelper.back(null);
-        },
-        onConfirm: () {
-          openAppSettings();
-          TBRouterHelper.back(null);
-        },
-      );
+      // BrnDialogManager.showConfirmDialog(
+      //   context,
+      //   title: '温馨提示',
+      //   cancel: '取消',
+      //   confirm: '确定',
+      //   message: message,
+      //   onCancel: () {
+      //     TBRouterHelper.back(null);
+      //   },
+      //   onConfirm: () {
+      //     openAppSettings();
+      //     TBRouterHelper.back(null);
+      //   },
+      // );
     });
   }
 

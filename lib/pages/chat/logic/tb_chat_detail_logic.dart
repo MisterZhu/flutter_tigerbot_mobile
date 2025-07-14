@@ -5,25 +5,18 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'package:TigerChat/pages/chat/model/chat_request_file_model.dart';
 import 'package:TigerChat/util/tb_permission_manager.dart';
-import 'package:bruno/bruno.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_screenshot_callback/flutter_screenshot_callback.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constant/tb_config.dart';
 import '../../../constant/tb_enum.dart';
 import '../../../constant/tb_export_common.dart';
-import '../../../util/dialog/sc_dialog_utils.dart';
-import '../../../util/dialog/sc_uddate_dialog.dart';
-import '../../../util/provider/user_info_provider.dart';
 import '../../../util/request/http_request.dart';
 import '../../../util/request/response/TBResponse.dart';
 import '../../../util/request/sc_http_manager.dart';
@@ -36,10 +29,8 @@ import '../model/chat_helloworld_model.dart';
 import '../model/chat_model.dart';
 import '../model/chat_request_model.dart';
 import '../model/chat_response_model.dart';
-import '../model/hello_suggest_model.dart';
 import '../model/tb_assistants_model.dart';
 import '../model/tb_chat_msg_model.dart';
-import '../widgets/cell/chat_report_picker.dart';
 
 class PartModel {
   String str;
@@ -1139,48 +1130,48 @@ class TBChatDetailLogic extends GetxController implements IScreenshotCallback {
       '血腥暴力',
       '其他',
     ];
-    showDialog(
-        context: context,
-        builder: (context) {
-          return TBReportPicker(
-            title: "举报反馈问题",
-            tags: tags,
-            inputHintText: '我还有其他的反馈和意见',
-            onConfirm: (index, list, input) {
-              // showToast(index, list, input, context);
-              print("index = $index");
-              print("list = $list");
-              print("input = $input");
-              // if (input.isEmpty) {
-              //   BrnToast.show('请输入举报内容', context);
-              //   return;
-              // }
-              if (list.isEmpty) {
-                BrnToast.show('请选择要举报的问题类型', context);
-                return;
-              }
-              String listAsString = list.join(', ');
-              String result = '$listAsString, $input';
-              print("Result = $result");
-
-              feedbackRequest(result);
-            },
-            config: BrnAppraiseConfig(
-                showConfirmButton: true,
-                isConfirmButtonEnabled: true,
-                count: 5,
-                starAppraiseHint: '星星未选择时的文案',
-                inputTextChangeCallback: (input) {
-                  // BrnToast.show('输入的内容为' + input, context);
-                },
-                iconClickCallback: (index) {
-                  // BrnToast.show('选中的评价为$index', context);
-                },
-                tagSelectCallback: (list) {
-                  // BrnToast.show('选中的标签为:' + list.toString(), context);
-                }),
-          );
-        });
+    // showDialog(
+    //     context: context,
+    //     builder: (context) {
+    //       return TBReportPicker(
+    //         title: "举报反馈问题",
+    //         tags: tags,
+    //         inputHintText: '我还有其他的反馈和意见',
+    //         onConfirm: (index, list, input) {
+    //           // showToast(index, list, input, context);
+    //           print("index = $index");
+    //           print("list = $list");
+    //           print("input = $input");
+    //           // if (input.isEmpty) {
+    //           //   BrnToast.show('请输入举报内容', context);
+    //           //   return;
+    //           // }
+    //           if (list.isEmpty) {
+    //             // BrnToast.show('请选择要举报的问题类型', context);
+    //             return;
+    //           }
+    //           String listAsString = list.join(', ');
+    //           String result = '$listAsString, $input';
+    //           print("Result = $result");
+    //
+    //           feedbackRequest(result);
+    //         },
+    //         config: BrnAppraiseConfig(
+    //             showConfirmButton: true,
+    //             isConfirmButtonEnabled: true,
+    //             count: 5,
+    //             starAppraiseHint: '星星未选择时的文案',
+    //             inputTextChangeCallback: (input) {
+    //               // BrnToast.show('输入的内容为' + input, context);
+    //             },
+    //             iconClickCallback: (index) {
+    //               // BrnToast.show('选中的评价为$index', context);
+    //             },
+    //             tagSelectCallback: (list) {
+    //               // BrnToast.show('选中的标签为:' + list.toString(), context);
+    //             }),
+    //       );
+    //     });
   }
 
   /// 提交反馈

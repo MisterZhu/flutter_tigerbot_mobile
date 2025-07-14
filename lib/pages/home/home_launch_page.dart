@@ -4,7 +4,6 @@ import 'package:TigerChat/pages/home/view/tb_launch_apply.dart';
 import 'package:TigerChat/pages/home/view/tb_launch_review.dart';
 import 'package:TigerChat/util/common_tools.dart';
 import 'package:TigerChat/util/provider/user_info_provider.dart';
-import 'package:bruno/bruno.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
@@ -135,32 +134,32 @@ class _HomeLaunchPageState extends State<HomeLaunchPage> {
 
   ///弹出邀请码输入框
   void showInputDialog(BuildContext context, TBLaunchLogic logic) {
-    BrnMiddleInputDialog(
-      title: 'inviteCode'.tr,
-      hintText: 'inviteTip'.tr,
-      cancelText: 'Cancel'.tr,
-      confirmText: 'Confirm1'.tr,
-      maxLength: 1000,
-      maxLines: 2,
-      barrierDismissible: false,
-      inputEditingController: TextEditingController()..text = '',
-      textInputAction: TextInputAction.done,
-      onConfirm: (value) {
-        if (value.isEmpty) {
-          Fluttertoast.showToast(
-            msg: 'codeEmptyTip'.tr,
-            gravity: ToastGravity.CENTER,
-          );
-          return;
-        }
-        logic.inviteCode = value;
-        logic.requestInviteCode();
-        TBRouterHelper.back(null);
-      },
-      onCancel: () {
-        TBRouterHelper.back(null);
-      },
-    ).show(context);
+    // BrnMiddleInputDialog(
+    //   title: 'inviteCode'.tr,
+    //   hintText: 'inviteTip'.tr,
+    //   cancelText: 'Cancel'.tr,
+    //   confirmText: 'Confirm1'.tr,
+    //   maxLength: 1000,
+    //   maxLines: 2,
+    //   barrierDismissible: false,
+    //   inputEditingController: TextEditingController()..text = '',
+    //   textInputAction: TextInputAction.done,
+    //   onConfirm: (value) {
+    //     if (value.isEmpty) {
+    //       Fluttertoast.showToast(
+    //         msg: 'codeEmptyTip'.tr,
+    //         gravity: ToastGravity.CENTER,
+    //       );
+    //       return;
+    //     }
+    //     logic.inviteCode = value;
+    //     logic.requestInviteCode();
+    //     TBRouterHelper.back(null);
+    //   },
+    //   onCancel: () {
+    //     TBRouterHelper.back(null);
+    //   },
+    // ).show(context);
   }
 
   /// skin1

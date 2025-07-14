@@ -2,7 +2,6 @@ import 'package:TigerChat/pages/chat/widgets/cell/chat_response_item.dart';
 import 'package:TigerChat/util/common_tools.dart';
 import 'package:TigerChat/util/provider/chat_provider.dart';
 import 'package:TigerChat/util/tb_utils.dart';
-import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -491,64 +490,64 @@ class _ChatResponseCellState extends State<ChatResponseCell> {
   }
 
   void showPopup() {
-    ChatResponseModel? model = this.widget.model;
-
-    List<Widget>? itemWidgets = [];
-    if (model != null && model.isSearch) {
-      itemWidgets = model.items.map((e) {
-        return Container(
-          alignment: Alignment.centerLeft,
-          child: ChatResponseSearchItem(e),
-          // padding: EdgeInsets.only(bottom: 5.w),
-        );
-      }).toList();
-    }
-    BrnPopupDirection topOrBot = BrnPopupDirection.bottom;
-    double bottomDis = TBUtils.getBottomDistanceFromKey(itemKey);
-    bottomDis = bottomDis + 140;
-    double wegH = TBUtils.getHeightFromKey(itemKey);
-    double offsetDis = 0.0;
-    if (bottomDis >= TBDefVal.screenHeight / 2) {
-      offsetDis = -80;
-      topOrBot = BrnPopupDirection.bottom;
-    } else {
-      offsetDis = 125 - wegH;
-      topOrBot = BrnPopupDirection.top;
-    }
-    BrnPopupWindow.showPopWindow(
-      context,
-      "",
-      itemKey,
-      hasCloseIcon: true,
-      dismissCallback: () {},
-      // offset: 20.w,
-      arrowOffset: 26.w,
-      offset: offsetDis,
-      popDirection: topOrBot,
-      // borderColor: TBColors.color_D7D8DB,
-      // backgroundColor: TBColors.color_272727,
-      backgroundColor: TBColors.color_323335,
-
-      paddingInsets:
-          const EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 10),
-      widget: Container(
-        // height: 118.h,
-        width: (TBDefVal.screenWidth - 60).w,
-        // padding: EdgeInsets.all(8.w),
-        child: itemWidgets.length > 3
-            ? Container(
-                height: 300.h,
-                child: ListView(
-                  padding: EdgeInsets.zero, // 去掉默认的padding
-                  children: itemWidgets,
-                ),
-              )
-            : Column(
-                mainAxisSize: MainAxisSize.min, // 让Column自适应高度
-                children: itemWidgets,
-              ),
-      ),
-    );
+    // ChatResponseModel? model = this.widget.model;
+    //
+    // List<Widget>? itemWidgets = [];
+    // if (model != null && model.isSearch) {
+    //   itemWidgets = model.items.map((e) {
+    //     return Container(
+    //       alignment: Alignment.centerLeft,
+    //       child: ChatResponseSearchItem(e),
+    //       // padding: EdgeInsets.only(bottom: 5.w),
+    //     );
+    //   }).toList();
+    // }
+    // BrnPopupDirection topOrBot = BrnPopupDirection.bottom;
+    // double bottomDis = TBUtils.getBottomDistanceFromKey(itemKey);
+    // bottomDis = bottomDis + 140;
+    // double wegH = TBUtils.getHeightFromKey(itemKey);
+    // double offsetDis = 0.0;
+    // if (bottomDis >= TBDefVal.screenHeight / 2) {
+    //   offsetDis = -80;
+    //   topOrBot = BrnPopupDirection.bottom;
+    // } else {
+    //   offsetDis = 125 - wegH;
+    //   topOrBot = BrnPopupDirection.top;
+    // }
+    // BrnPopupWindow.showPopWindow(
+    //   context,
+    //   "",
+    //   itemKey,
+    //   hasCloseIcon: true,
+    //   dismissCallback: () {},
+    //   // offset: 20.w,
+    //   arrowOffset: 26.w,
+    //   offset: offsetDis,
+    //   popDirection: topOrBot,
+    //   // borderColor: TBColors.color_D7D8DB,
+    //   // backgroundColor: TBColors.color_272727,
+    //   backgroundColor: TBColors.color_323335,
+    //
+    //   paddingInsets:
+    //       const EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 10),
+    //   widget: Container(
+    //     // height: 118.h,
+    //     width: (TBDefVal.screenWidth - 60).w,
+    //     // padding: EdgeInsets.all(8.w),
+    //     child: itemWidgets.length > 3
+    //         ? Container(
+    //             height: 300.h,
+    //             child: ListView(
+    //               padding: EdgeInsets.zero, // 去掉默认的padding
+    //               children: itemWidgets,
+    //             ),
+    //           )
+    //         : Column(
+    //             mainAxisSize: MainAxisSize.min, // 让Column自适应高度
+    //             children: itemWidgets,
+    //           ),
+    //   ),
+    // );
   }
 
   @override
@@ -613,140 +612,6 @@ class _ChatResponseCellState extends State<ChatResponseCell> {
                         onLongPress: () {
                           // 不执行任何长按操作，直接返回
                           return;
-                          BrnPopupDirection topOrBot = BrnPopupDirection.bottom;
-                          double topdis =
-                              TBUtils.getTopDistanceFromKey(itemKey);
-                          double botdis =
-                              TBUtils.getBottomDistanceFromKey(itemKey);
-                          double wegH = TBUtils.getHeightFromKey(itemKey);
-                          double offsetDis = 10.0;
-                          if ((topdis >= 70 && botdis >= 70) ||
-                              (topdis < 70 && botdis >= 70)) {
-                            offsetDis = 10;
-                            topOrBot = BrnPopupDirection.bottom;
-                          } else if (topdis < 70 && botdis < 70) {
-                            offsetDis = -(TBDefVal.screenHeight / 2 - botdis);
-                            topOrBot = BrnPopupDirection.bottom;
-                          } else if (topdis >= 70 && botdis < 70) {
-                            offsetDis = 10;
-                            topOrBot = BrnPopupDirection.top;
-                          }
-                          BrnPopupWindow.showPopWindow(
-                            context,
-                            'Clear Record'.tr,
-                            _key,
-                            // arrowOffset: -1000,
-                            // offset: 25.w,
-                            offset: offsetDis.h,
-                            popDirection: topOrBot,
-                            paddingInsets: const EdgeInsets.only(
-                                left: 0, top: 0, right: 0, bottom: 0),
-
-                            widget: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Get.back();
-                                      if (this.widget.deleteHandle != null) {
-                                        this.widget.deleteHandle!();
-                                      }
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 18.0,
-                                          right: 10.0,
-                                          top: 14,
-                                          bottom: 14),
-                                      child: Text(
-                                        'Delete'.tr,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                  // SizedBox(
-                                  //   width: 10.w,
-                                  // ),
-                                  Container(
-                                    width: 1,
-                                    height: 8.w,
-                                    color: Colors.white,
-                                  ),
-                                  // SizedBox(
-                                  //   width: 10.w,
-                                  // ),
-                                  Consumer<ChatProvider>(
-                                      builder: (context, chat, child) {
-                                    return InkWell(
-                                      onTap: () {
-                                        Get.back();
-
-                                        chat.editMode = !chat.isEditMode;
-                                        if (this.widget.mulChoiceHandle !=
-                                            null) {
-                                          this.widget.mulChoiceHandle!();
-                                        }
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 10.0,
-                                            right: 10.0,
-                                            top: 14,
-                                            bottom: 14),
-                                        child: Text(
-                                          chat.isEditMode
-                                              ? 'Cancel Multi-select'.tr
-                                              : 'Multi-select'.tr,
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ),
-                                    );
-                                  }),
-                                  // SizedBox(
-                                  //   width: 10.w,
-                                  // ),
-                                  Container(
-                                    width: 1,
-                                    height: 8.w,
-                                    color: Colors.white,
-                                  ),
-                                  // SizedBox(
-                                  //   width: 10.w,
-                                  // ),
-                                  Consumer<ChatProvider>(
-                                      builder: (context, chat, child) {
-                                    return InkWell(
-                                      onTap: () {
-                                        Get.back();
-
-                                        print("点击全选");
-                                        chat.choiceAll = !chat.isChoiceAll;
-                                        if (this.widget.selectAllHandle !=
-                                            null) {
-                                          this.widget.selectAllHandle!();
-                                        }
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 10.0,
-                                            right: 18.0,
-                                            top: 14,
-                                            bottom: 14),
-                                        child: Text(
-                                          chat.isChoiceAll
-                                              ? 'Cancel select all'.tr
-                                              : 'Select all'.tr,
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ),
-                                    );
-                                  }),
-                                ],
-                              ),
-                            ),
-                          );
                         },
                       ),
                 // SizedBox(

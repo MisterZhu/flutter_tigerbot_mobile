@@ -3,7 +3,6 @@ import 'package:TigerChat/pages/mine/widgets/mine_item.dart';
 import 'package:TigerChat/pages/mine/widgets/mine_switch_item.dart';
 import 'package:TigerChat/pages/mine/widgets/tb_mine_teen_view.dart';
 import 'package:TigerChat/util/provider/user_info_provider.dart';
-import 'package:bruno/bruno.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
@@ -138,89 +137,89 @@ class MinePage extends StatelessWidget {
                                         ? '跟随系统'
                                         : controller.skinStr,
                                     onTap: () {
-                                      List<BrnCommonActionSheetItem> actions =
-                                          [];
-                                      actions.add(BrnCommonActionSheetItem(
-                                        '跟随系统',
-                                        // desc: '辅助信息辅助信息辅助信息',
-                                        actionStyle:
-                                            BrnCommonActionSheetItemStyle
-                                                .normal,
-                                      ));
-                                      actions.add(BrnCommonActionSheetItem(
-                                        '浅色',
-                                        // desc: '辅助信息辅助信息辅助信息',
-                                        actionStyle:
-                                            BrnCommonActionSheetItemStyle
-                                                .normal,
-                                      ));
-                                      actions.add(BrnCommonActionSheetItem(
-                                        '深色',
-                                        // desc: '辅助信息辅助信息辅助信息',
-                                        actionStyle:
-                                            BrnCommonActionSheetItemStyle
-                                                .normal,
-                                      ));
+                                      // List<BrnCommonActionSheetItem> actions =
+                                      //     [];
                                       // actions.add(BrnCommonActionSheetItem(
-                                      //   '粉色',
+                                      //   '跟随系统',
                                       //   // desc: '辅助信息辅助信息辅助信息',
                                       //   actionStyle:
                                       //       BrnCommonActionSheetItemStyle
                                       //           .normal,
                                       // ));
-                                      // 展示actionSheet
-                                      showModalBottomSheet(
-                                          context: context,
-                                          backgroundColor: Colors.transparent,
-                                          builder: (BuildContext context) {
-                                            return BrnCommonActionSheet(
-                                              title: "请选择主题皮肤",
-                                              actions: actions,
-                                              cancelTitle: "取消",
-                                              clickCallBack: (int index,
-                                                  BrnCommonActionSheetItem
-                                                      actionEle) {
-                                                String title = actionEle.title;
-
-                                                switch (index) {
-                                                  case 0:
-                                                    BrnToast.show(
-                                                        "选择跟随系统", context);
-
-                                                    controller
-                                                        .saveTheme('跟随系统');
-                                                    break;
-                                                  case 1:
-                                                    BrnToast.show(
-                                                        "选择浅色", context);
-                                                    controller.saveTheme('浅色');
-
-                                                    break;
-                                                  case 2:
-                                                    BrnToast.show(
-                                                        "选择深色", context);
-                                                    controller.saveTheme('深色');
-
-                                                    break;
-                                                  // case 3:
-                                                  //   BrnToast.show(
-                                                  //       "选择粉色", context);
-                                                  //   controller.saveTheme('粉色');
-                                                  //
-                                                  //   break;
-                                                  default:
-                                                    BrnToast.show(
-                                                        "默认跟随系统", context);
-                                                    controller
-                                                        .saveTheme('跟随系统');
-
-                                                    break;
-                                                }
-                                                controller.update();
-                                                themeController.update();
-                                              },
-                                            );
-                                          });
+                                      // actions.add(BrnCommonActionSheetItem(
+                                      //   '浅色',
+                                      //   // desc: '辅助信息辅助信息辅助信息',
+                                      //   actionStyle:
+                                      //       BrnCommonActionSheetItemStyle
+                                      //           .normal,
+                                      // ));
+                                      // actions.add(BrnCommonActionSheetItem(
+                                      //   '深色',
+                                      //   // desc: '辅助信息辅助信息辅助信息',
+                                      //   actionStyle:
+                                      //       BrnCommonActionSheetItemStyle
+                                      //           .normal,
+                                      // ));
+                                      // // actions.add(BrnCommonActionSheetItem(
+                                      // //   '粉色',
+                                      // //   // desc: '辅助信息辅助信息辅助信息',
+                                      // //   actionStyle:
+                                      // //       BrnCommonActionSheetItemStyle
+                                      // //           .normal,
+                                      // // ));
+                                      // // 展示actionSheet
+                                      // showModalBottomSheet(
+                                      //     context: context,
+                                      //     backgroundColor: Colors.transparent,
+                                      //     builder: (BuildContext context) {
+                                      //       return BrnCommonActionSheet(
+                                      //         title: "请选择主题皮肤",
+                                      //         actions: actions,
+                                      //         cancelTitle: "取消",
+                                      //         clickCallBack: (int index,
+                                      //             BrnCommonActionSheetItem
+                                      //                 actionEle) {
+                                      //           String title = actionEle.title;
+                                      //
+                                      //           switch (index) {
+                                      //             case 0:
+                                      //               BrnToast.show(
+                                      //                   "选择跟随系统", context);
+                                      //
+                                      //               controller
+                                      //                   .saveTheme('跟随系统');
+                                      //               break;
+                                      //             case 1:
+                                      //               BrnToast.show(
+                                      //                   "选择浅色", context);
+                                      //               controller.saveTheme('浅色');
+                                      //
+                                      //               break;
+                                      //             case 2:
+                                      //               BrnToast.show(
+                                      //                   "选择深色", context);
+                                      //               controller.saveTheme('深色');
+                                      //
+                                      //               break;
+                                      //             // case 3:
+                                      //             //   BrnToast.show(
+                                      //             //       "选择粉色", context);
+                                      //             //   controller.saveTheme('粉色');
+                                      //             //
+                                      //             //   break;
+                                      //             default:
+                                      //               BrnToast.show(
+                                      //                   "默认跟随系统", context);
+                                      //               controller
+                                      //                   .saveTheme('跟随系统');
+                                      //
+                                      //               break;
+                                      //           }
+                                      //           controller.update();
+                                      //           themeController.update();
+                                      //         },
+                                      //       );
+                                      //     });
                                     },
                                   );
                                 }),

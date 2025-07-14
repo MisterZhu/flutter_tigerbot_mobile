@@ -2,16 +2,12 @@ import 'package:TigerChat/constant/tb_export_common.dart';
 import 'package:TigerChat/util/common_tools.dart';
 import 'package:TigerChat/util/provider/chat_provider.dart';
 import 'package:TigerChat/util/provider/user_info_provider.dart';
-import 'package:TigerChat/util/tb_utils.dart';
-import 'package:bruno/bruno.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-
-import '../../../util/popup_window.dart';
 import '../VoiceMsgView/logic/tb_voice_controller.dart';
 import '../VoiceMsgView/view/tb_voice_widget.dart';
 import '../logic/tb_chat_detail_logic.dart';

@@ -1,5 +1,4 @@
 import 'package:TigerChat/constant/tb_export_common.dart';
-import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../widgets/tb_multi_select_button.dart';
@@ -70,60 +69,60 @@ class TBApplyBetaModal {
                           color: TBColors.color_1A1A1A),
                     ),
                   ),
-                  BrnTextBlockInputFormItem(
-                    controller: TextEditingController()..text = logic.phoneNum,
-                    title: "mobile".tr,
-                    hint: "Telephone_number_is_empty".tr,
-                    isRequire: true,
-                    minLines: 1,
-                    maxLines: 5,
-                    onChanged: (newValue) {
-                      // BrnToast.show("点击触发回调_${newValue}_onChanged", context);
-                      logic.phoneNum = newValue;
-                    },
-                    themeData: BrnFormItemConfig(
-                        backgroundColor: Colors.white,
-                        titleTextStyle:
-                            BrnTextStyle(color: TBColors.color_272625)),
-                  ),
-                  BrnTextBlockInputFormItem(
-                    controller: TextEditingController()..text = logic.emailNum,
-                    title: "email".tr,
-                    hint: "Please enter".tr,
-                    // isRequire: true,
-                    minLines: 1,
-                    maxLines: 5,
-                    onChanged: (newValue) {
-                      // BrnToast.show("点击触发回调_${newValue}_onChanged", context);
-                      logic.emailNum = newValue;
-                    },
-                    themeData: BrnFormItemConfig(
-                        backgroundColor: Colors.white,
-                        titleTextStyle:
-                            BrnTextStyle(color: TBColors.color_272625)),
-                  ),
-                  BrnTextBlockInputFormItem(
-                    controller: TextEditingController()
-                      ..text = logic.organiName,
-                    title: "organization".tr,
-                    hint: "Please enter".tr,
-                    isRequire: true,
-                    minLines: 1,
-                    maxLines: 5,
-                    onChanged: (newValue) {
-                      // BrnToast.show("点击触发回调_${newValue}_onChanged", context);
-                      logic.organiName = newValue;
-                    },
-                    themeData: BrnFormItemConfig(
-                        backgroundColor: Colors.white,
-                        titleTextStyle:
-                            BrnTextStyle(color: TBColors.color_272625)),
-                  ),
-                  BrnMultiChoiceInputFormItem(
-                    title: "applyForTip".tr,
-                    options: [],
-                    value: [],
-                  ),
+                  // BrnTextBlockInputFormItem(
+                  //   controller: TextEditingController()..text = logic.phoneNum,
+                  //   title: "mobile".tr,
+                  //   hint: "Telephone_number_is_empty".tr,
+                  //   isRequire: true,
+                  //   minLines: 1,
+                  //   maxLines: 5,
+                  //   onChanged: (newValue) {
+                  //     // BrnToast.show("点击触发回调_${newValue}_onChanged", context);
+                  //     logic.phoneNum = newValue;
+                  //   },
+                  //   themeData: BrnFormItemConfig(
+                  //       backgroundColor: Colors.white,
+                  //       titleTextStyle:
+                  //           BrnTextStyle(color: TBColors.color_272625)),
+                  // ),
+                  // BrnTextBlockInputFormItem(
+                  //   controller: TextEditingController()..text = logic.emailNum,
+                  //   title: "email".tr,
+                  //   hint: "Please enter".tr,
+                  //   // isRequire: true,
+                  //   minLines: 1,
+                  //   maxLines: 5,
+                  //   onChanged: (newValue) {
+                  //     // BrnToast.show("点击触发回调_${newValue}_onChanged", context);
+                  //     logic.emailNum = newValue;
+                  //   },
+                  //   themeData: BrnFormItemConfig(
+                  //       backgroundColor: Colors.white,
+                  //       titleTextStyle:
+                  //           BrnTextStyle(color: TBColors.color_272625)),
+                  // ),
+                  // BrnTextBlockInputFormItem(
+                  //   controller: TextEditingController()
+                  //     ..text = logic.organiName,
+                  //   title: "organization".tr,
+                  //   hint: "Please enter".tr,
+                  //   isRequire: true,
+                  //   minLines: 1,
+                  //   maxLines: 5,
+                  //   onChanged: (newValue) {
+                  //     // BrnToast.show("点击触发回调_${newValue}_onChanged", context);
+                  //     logic.organiName = newValue;
+                  //   },
+                  //   themeData: BrnFormItemConfig(
+                  //       backgroundColor: Colors.white,
+                  //       titleTextStyle:
+                  //           BrnTextStyle(color: TBColors.color_272625)),
+                  // ),
+                  // BrnMultiChoiceInputFormItem(
+                  //   title: "applyForTip".tr,
+                  //   options: [],
+                  //   value: [],
+                  // ),
                   multiSelectView(),
                   SizedBox(
                     height: 30.h,
